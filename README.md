@@ -163,3 +163,35 @@ The **Quality Assurance Engineer** is responsible for testing the application to
 * **Contributions:** Guarantees a high-quality, reliable, and bug-free product, providing confidence in the application's performance.
 
 ---
+
+# Feature Breakdown
+
+This section details the core functionalities and main features that will be implemented in the AirBnB Clone project. Each feature is designed to replicate essential aspects of the original platform, contributing to a comprehensive and functional application.
+
+---
+
+### 1. User Management
+
+This feature encompasses all functionalities related to user accounts. It includes user registration, login, profile management (e.g., updating personal information), and secure authentication. User management is fundamental as it allows individuals to interact with the platform as either guests (booking properties) or hosts (listing properties).
+
+### 2. Property Management
+
+Property Management empowers hosts to list, update, and manage their accommodations. This includes functionalities like creating new property listings with details such as title, description, location, and pricing, as well as the ability to edit or delete existing listings. This feature is crucial for building the inventory of available properties on the platform.
+
+### 3. Booking System
+
+The Booking System allows guests to search for available properties, select check-in and check-out dates, and make reservations. It will handle the logic for checking property availability, calculating total prices, and managing the booking lifecycle (e.g., pending, confirmed, cancelled). This is a central feature that enables the core transaction of the AirBnB platform.
+
+### 4. Review and Rating System
+
+This feature enables users to provide feedback on properties they have stayed in and hosts they have interacted with. Guests can submit star ratings and written reviews, which will then be displayed on property pages. The review system builds trust within the community and helps future guests make informed decisions.
+
+### 5. Search and Filtering
+
+The Search and Filtering feature allows users to efficiently find properties based on various criteria. Users can search by location, dates, price range, number of guests, and other amenities. This functionality is essential for providing a user-friendly experience, enabling guests to quickly discover relevant listings.
+
+### 6. Payment Processing (Conceptual)
+
+While full integration with a payment gateway might be a later phase, this feature conceptually covers the process of handling financial transactions for bookings. It involves capturing payment information, processing payments, and managing refunds. This is critical for monetizing the platform and completing the booking cycle.
+
+---
