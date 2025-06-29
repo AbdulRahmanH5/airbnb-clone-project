@@ -16,7 +16,7 @@ The primary objectives for this project include:
 * **Building an Intuitive and Interactive User Interface:** Designing a seamless user experience that closely mimics the AirBnB experience.
 * **Data Handling and Database Interaction:** Learning how to efficiently store, retrieve, and update data.
 
-##Technology Stack
+## Technology Stack
 
 This project will be built using a carefully selected technology stack to ensure scalability, maintainability, and a robust user experience. Each technology serves a specific purpose, contributing to the overall architecture and functionality of the AirBnB Clone.
 
