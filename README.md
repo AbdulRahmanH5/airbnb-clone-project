@@ -35,15 +35,87 @@ This project will be built using a carefully selected technology stack to ensure
 * **[Django / Flask (if Python) or Express.js (if Node.js) or Ruby on Rails (if Ruby):]** (e.g., **Flask:** A lightweight Python web framework used for building **robust and scalable RESTful APIs** that handle requests from the frontend, manage user authentication, and interact with the database for the AirBnB Clone.)
 * **RESTful APIs:** This architectural style will be used to design the **communication interface between the frontend and backend**. It ensures that data exchange (e.g., fetching listings, creating bookings) happens in a standardized and efficient manner.
 
-### Database
+# Database Design
 
-* **[PostgreSQL / MongoDB / MySQL (Choose One):]** (e.g., **PostgreSQL:** A powerful open-source relational database management system used for **storing and managing all structured data** for the AirBnB Clone, including user profiles, property listings, and booking details, ensuring data integrity and reliability.)
+Understanding the structure of our database is fundamental to building a robust and scalable AirBnB Clone. This section outlines the key entities we'll need to store information, their important fields, and how they relate to each other. This relational model will guide our database schema design.
 
-### Development Tools & Environment
+---
 
-* **Git:** A distributed version control system essential for **tracking changes in the codebase**, facilitating collaboration, and managing different versions of the project.
-* **GitHub:** A web-based platform used for **hosting the project's Git repository**, enabling seamless team collaboration, code reviews, and project management.
-* **Docker (Optional):** A platform for **containerizing the application and its dependencies**, ensuring consistent development, testing, and deployment environments across different machines.
+## Key Entities and Their Relationships
+
+### 1. Users
+
+This entity will store information about all registered users, whether they are guests booking properties or hosts listing them.
+
+* **Important Fields:**
+    * `id` (Primary Key): Unique identifier for each user.
+    * `username` (Unique): User's chosen username for login.
+    * `email` (Unique): User's email address, used for login and notifications.
+    * `password_hash`: Hashed password for secure authentication.
+    * `created_at`: Timestamp for when the user account was created.
+
+### 2. Properties
+
+This entity represents the accommodations that hosts list on the platform.
+
+* **Important Fields:**
+    * `id` (Primary Key): Unique identifier for each property.
+    * `host_id` (Foreign Key): Links to the `Users` table, identifying the owner/host of the property.
+    * `title`: The name or title of the property listing.
+    * `description`: A detailed description of the property.
+    * `price_per_night`: The cost to rent the property for one night.
+    * `location`: Geographic location details (e.g., city, address, coordinates).
+    * `max_guests`: Maximum number of guests the property can accommodate.
+
+### 3. Bookings
+
+This entity captures reservation details made by guests for specific properties.
+
+* **Important Fields:**
+    * `id` (Primary Key): Unique identifier for each booking.
+    * `guest_id` (Foreign Key): Links to the `Users` table, identifying the user making the booking.
+    * `property_id` (Foreign Key): Links to the `Properties` table, identifying the booked property.
+    * `check_in_date`: The start date of the booking.
+    * `check_out_date`: The end date of the booking.
+    * `total_price`: The total cost of the booking.
+    * `status`: Current status of the booking (e.g., 'pending', 'confirmed', 'cancelled').
+
+### 4. Reviews
+
+This entity stores feedback and ratings provided by guests after their stay.
+
+* **Important Fields:**
+    * `id` (Primary Key): Unique identifier for each review.
+    * `reviewer_id` (Foreign Key): Links to the `Users` table, identifying the user who wrote the review.
+    * `property_id` (Foreign Key): Links to the `Properties` table, identifying the property being reviewed.
+    * `rating`: Numerical rating (e.g., 1-5 stars).
+    * `comment`: Textual feedback about the stay.
+    * `created_at`: Timestamp for when the review was submitted.
+
+### 5. Payments
+
+This entity will track payment transactions related to bookings.
+
+* **Important Fields:**
+    * `id` (Primary Key): Unique identifier for each payment.
+    * `booking_id` (Foreign Key): Links to the `Bookings` table, identifying the booking being paid for.
+    * `amount`: The amount of the payment.
+    * `payment_date`: The date and time the payment was processed.
+    * `status`: Status of the payment (e.g., 'completed', 'failed', 'refunded').
+    * `transaction_id`: Unique ID provided by the payment gateway.
+
+---
+
+## Entity Relationships Summary
+
+Here's how these entities relate to each other:
+
+* A **User** can **host multiple Properties** (One-to-Many: `Users` to `Properties`).
+* A **User** can make **multiple Bookings** (One-to-Many: `Users` to `Bookings`).
+* A **Property** can have **multiple Bookings** (One-to-Many: `Properties` to `Bookings`).
+* A **Property** can receive **multiple Reviews** (One-to-Many: `Properties` to `Reviews`).
+* A **User** can write **multiple Reviews** (One-to-Many: `Users` to `Reviews`).
+* A **Booking** is associated with **one Payment** (One-to-One: `Bookings` to `Payments`). This assumes a single payment per booking.
 
 ---
 
